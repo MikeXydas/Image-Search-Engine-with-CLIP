@@ -29,8 +29,9 @@ class ElasticSearchImageController:
             logging.error('Error in indexing data')
             logging.error(str(ex))
 
-    def query_image(self, text_embedding):
+    def retrieve_image(self, text_embedding):
         s_body = {
+            "_source": ["path"],
             "query": {
                 "script_score": {
                     "query": {
@@ -43,6 +44,9 @@ class ElasticSearchImageController:
                 }
             }
         }
+        results = self.es_conn.search(index=self.index_name, body=s_body)
+
+        return results
 
     @staticmethod
     def init_connection(host, port) -> elasticsearch.client.Elasticsearch:
@@ -89,9 +93,8 @@ class ElasticSearchImageController:
                 logging.error(f"TYPE: {response['error']['type']}")
 
 
-def elastic_search_initializer(es_controller: ElasticSearchImageController, directory: str):
+def elastic_search_initializer(es_controller: ElasticSearchImageController, directory: str, clip):
     image_paths = glob.glob(f"{directory}*")
-    clip = ClipWrapper()
 
     for img_path in image_paths:
         img_info = clip.create_image_embedding(img_path)

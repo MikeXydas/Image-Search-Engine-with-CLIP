@@ -29,6 +29,7 @@ Then there two possible of installing the app:
 2. Run `docker-compose up --build` in the directory root. (Takes ~5 minutes creating a 7GB image)
 
 *Since, I have not implemented a frontend we will use it as a command line app.*
+
 3. Run `docker ps` and note the container id of the clip image (NOT the elasticsearch id).
 4. Run `docker exec -it CONTAINER_ID /bin/bash`
 5. In the container run `python cmd.py`. You will have to for the model to be downloaded.

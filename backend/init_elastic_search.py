@@ -13,8 +13,15 @@ class ElasticSearchImageController:
     def __init__(self, host: str, port: int, index_name: str, init_index: bool):
         self.index_name = index_name
         self.es_conn = self.init_connection(host, port)
-        if init_index:
+        if not self.index_exists():
             self.create_mapping()
+
+    def index_exists(self) -> bool:
+        return self.es_conn.indices.exists(index=self.index_name)
+
+    def is_index_populated(self) -> bool:
+        self.es_conn.indices.refresh(index=self.index_name)
+        return int(self.es_conn.cat.count(index=self.index_name, params={"format": "json"})[0]['count']) > 0
 
     def store_image(self, image: StoredImage) -> None:
         data = {
@@ -97,5 +104,6 @@ def elastic_search_initializer(es_controller: ElasticSearchImageController, dire
     image_paths = glob.glob(f"{directory}*")
 
     for img_path in image_paths:
+        logging.info(f"Storing embedding of {img_path}")
         img_info = clip.create_image_embedding(img_path)
         es_controller.store_image(img_info)

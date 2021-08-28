@@ -2,6 +2,9 @@ from typing import Tuple, List
 from backend.app import init_backend
 
 import webbrowser
+import logging
+
+logging.getLogger().setLevel(logging.WARNING)
 
 
 class CommandLineEndpoint:

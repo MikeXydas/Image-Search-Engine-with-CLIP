@@ -247,3 +247,4 @@ fabric.properties
 pyvenv.cfg
 pip-selfcheck.json
 
+/storage/

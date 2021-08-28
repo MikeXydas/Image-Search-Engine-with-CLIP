@@ -2,20 +2,21 @@ from backend.clip_processing import ClipWrapper
 from init_elastic_search import ElasticSearchImageController
 from init_elastic_search import elastic_search_initializer
 
+import yaml
+
 
 def init_backend():
-    # Hard coded variables. Should be at a config yaml file.
-    host = "localhost"
-    port = 9200
-    index_name = "image"
-    img_dir = "/home/mikexydas/PycharmProjects/CLIP_Image_Search_Engine/storage/images/"
-    init_elastic = False
+    with open('configs/config.yaml') as file:
+        settings = yaml.full_load(file)
+    elastic_settings = settings['Elastic']
+    storage_settings = settings['Storage']
 
-    es_controller = ElasticSearchImageController(host, port, index_name, init_elastic)
+    es_controller = ElasticSearchImageController(elastic_settings['host'], elastic_settings['port'],
+                                                 elastic_settings['image_embeddings_index'], elastic_settings['init'])
     clip = ClipWrapper()
 
-    if init_elastic:
-        elastic_search_initializer(es_controller, img_dir, clip)
+    if elastic_settings['init']:
+        elastic_search_initializer(es_controller, storage_settings['image_dir'], clip)
 
     return es_controller, clip
 

@@ -1,0 +1,7 @@
+Elastic:
+    host: "localhost"
+    port: 9200
+    image_embeddings_index: "image"
+    init: False
+Storage:
+    image_dir: "/home/mikexydas/PycharmProjects/CLIP_Image_Search_Engine/storage/images/"

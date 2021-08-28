@@ -1,0 +1,26 @@
+version: '3'
+services:
+  clip:
+    container_name: clip
+    build: .
+    restart: on-failure
+    depends_on:
+      - elastic
+    networks:
+      - backend
+
+  elastic:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.14.0
+    ports:
+      - 9200:9200
+      - 9300:9300
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+    networks:
+      - backend
+
+networks:
+  backend:
+      driver: bridge
+

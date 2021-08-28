@@ -6,11 +6,11 @@ import glob
 
 from elasticsearch import Elasticsearch
 
-from backend.clip_processing import StoredImage, ClipWrapper
+from backend.clip_processing import StoredImage
 
 
 class ElasticSearchImageController:
-    def __init__(self, host: str, port: int, index_name: str, init_index: bool):
+    def __init__(self, host: str, port: int, index_name: str):
         self.index_name = index_name
         self.es_conn = self.init_connection(host, port)
         if not self.index_exists():

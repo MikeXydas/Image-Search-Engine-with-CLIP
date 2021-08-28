@@ -14,7 +14,7 @@ def init_backend():
     storage_settings = settings['Storage']
 
     es_controller = ElasticSearchImageController(elastic_settings['host'], elastic_settings['port'],
-                                                 elastic_settings['image_embeddings_index'], elastic_settings['init'])
+                                                 elastic_settings['image_embeddings_index'])
     clip = ClipWrapper()
 
     # If the index is not populated then we should add the embeddings and paths of all the images

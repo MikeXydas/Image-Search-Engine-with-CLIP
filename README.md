@@ -52,4 +52,6 @@ TODO
 
 ## Limitations and Issues
 
-TODO
+* Cannot add an image in the Elasticsearch database without recalculating all of the embeddings.
+* The Docker image created is relatively big (7GB) since it includes the cuda toolikit. If you want to run the utility on cpu only I suggest the local installation option above.
+* No Elasticsearch persistence, which can be easily added through an elasticsearch data volume.

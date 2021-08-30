@@ -13,6 +13,12 @@ on our index.
 
 Then we get back the paths of the top matching images.
 
+## Video Demo
+
+*Yep, I have not yet implemented a frontend app but it's defenitely in my TODOs.*
+
+https://user-images.githubusercontent.com/35707606/131347529-52d8f304-17cb-405b-9602-70467d14c5b2.mp4
+
 ## Setting up
 
 **Setup the image directory**
@@ -46,9 +52,6 @@ Then there two possible of installing the app:
 
 5. Run `python backend/cmd.py`
 
-## Video Demo
-
-TODO
 
 ## Limitations and Issues
 

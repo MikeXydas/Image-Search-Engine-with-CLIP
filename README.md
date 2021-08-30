@@ -11,11 +11,11 @@ enters the prompt "dog", we calculate the text embedding using CLIP again and pe
 similarity query](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-script-score-query.html#vector-functions) 
 on our index.
 
-Then we get back the paths of the top matching images.
+Then the paths of the selected image are returned to the user.
 
 ## Video Demo
 
-*Yep, I have not yet implemented a frontend app but it's defenitely in my TODOs.*
+*Yep, I have not yet implemented a frontend app but it's definitely in my TODOs.*
 
 https://user-images.githubusercontent.com/35707606/131347529-52d8f304-17cb-405b-9602-70467d14c5b2.mp4
 
@@ -23,11 +23,11 @@ https://user-images.githubusercontent.com/35707606/131347529-52d8f304-17cb-405b-
 
 **Setup the image directory**
 
-We must point the app to directory we want to index.
+We must point the app to the image directory we want to index.
 1. Create a directory in the root of the repo named `storage`
 2. Add any images you want to index and search over (`jpeg, jpg, png`)
 
-Then there two possible of installing the app:
+Then there are two possible of installing the app:
 
 **Option 1: Docker compose installation**
 
@@ -53,8 +53,10 @@ Then there two possible of installing the app:
 5. Run `python backend/cmd.py`
 
 
-## Limitations and Issues
+## Where to
 
-* Cannot add an image in the Elasticsearch database without recalculating all of the embeddings.
-* The Docker image created is relatively big (7GB) since it includes the cuda toolikit. If you want to run the utility on cpu only I suggest the local installation option above.
+* Cannot add an image in the Elasticsearch database without recalculating all of the image embeddings.
+* The Docker image created is relatively big (7GB) since it includes the cuda toolikit. No cpu-only solution.
 * No Elasticsearch persistence, which can be easily added through an elasticsearch data volume.
+* A web-like frontend instead of the current command line utility.
+* Currently, when initializing we calculate each image embedding sequentially. Should add batch encoding to speed up the process.

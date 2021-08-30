@@ -1,10 +1,9 @@
 import logging
+import yaml
 
 from backend.clip_processing import ClipWrapper
-from init_elastic_search import ElasticSearchImageController
-from init_elastic_search import elastic_search_initializer
-
-import yaml
+from backend.init_elastic_search import ElasticSearchImageController
+from backend.init_elastic_search import elastic_search_initializer
 
 
 def init_backend():

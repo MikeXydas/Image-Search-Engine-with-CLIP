@@ -1,7 +1,7 @@
 Elastic:
-    host: "elastic"
+    host: "localhost"
     port: 9200
     image_embeddings_index: "image"
 Storage:
-#    image_dir: "/home/mikexydas/PycharmProjects/CLIP_Image_Search_Engine/storage/images/"  # Local path
-    image_dir: "../storage/images/"  # Docker path
+    image_dir: "/home/mikexydas/PycharmProjects/CLIP_Image_Search_Engine/storage/images/"  # Local path
+#    image_dir: "../storage/images/"  # Docker path

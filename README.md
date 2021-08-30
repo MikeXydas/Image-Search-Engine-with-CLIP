@@ -1,5 +1,5 @@
 # Image Search Engine
-*powered by [OpeanAI CLIP](https://github.com/openai/CLIP)*
+*powered by [OpeanAI's CLIP](https://github.com/openai/CLIP)*
 
 CLIP is a powerful pre-trained model able to calculate compatibility between an 
 image, and a text prompt. We can easily see how useful this model can be for an image search

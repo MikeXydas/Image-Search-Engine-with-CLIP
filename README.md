@@ -53,7 +53,7 @@ Then there are two possible of installing the app:
 5. Run `python backend/cmd.py`
 
 
-## Where to
+## Issues / TODOs
 
 * Cannot add an image in the Elasticsearch database without recalculating all of the image embeddings.
 * The Docker image created is relatively big (7GB) since it includes the cuda toolikit. No cpu-only solution.
